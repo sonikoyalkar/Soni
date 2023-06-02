@@ -9,6 +9,35 @@
         <table id="grid" class="table"></table>
 
 
+        <div class="overlay" id="overlay"></div>
+
+        <div class="modal" id="modal">
+            <button class="close-btn" onclick="closeModalPopup()">X</button>
+
+            <form name="editStudentForm">
+                <div>
+                    <label>Name</label>
+                    <input type="text" name="name" id="editName" />
+                </div>
+                <div>
+                    <label>Phone</label>
+                    <input type="text" name="phone" id="editPhone" />
+                </div>
+                <div>
+                    <label>Address</label>
+                    <input type="text" name="address" id="editAddress" />
+                </div>
+
+
+            </form>
+
+            <div class="action-btns">
+                <button class="btn-cancel" onclick="closeModalPopup()">Close</button>
+                <button class="btn-submit" onclick="editStudentDetails()">Submit</button>
+            </div>
+
+        </div>
+
 
         <script src="js/script.js"></script>
     </body>

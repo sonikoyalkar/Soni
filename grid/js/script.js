@@ -7,6 +7,8 @@ var students = [{ name: 'gov', phone: "988776666", address: "goshamahal" },
 
 // alert('hi')
 
+var selectedStudentIndex;
+
 console.log(students);
 
 var title = document.getElementById("title");
@@ -17,7 +19,6 @@ function render(){
     for(var i=0; i<students.length; i++){
         tbl = tbl + "<tr id='row"+ i +"'><td>" + students[i].name + "</td><td>" + students[i].phone + "</td><td>" + students[i].address + "</td><td><button onclick='editStudent("+ i +")'>Edit</button></td><td><button onclick='deleteStudent("+ i +")'>Delete</button></td></tr>"  
     }
-    console.log(tbl);
     var grid = document.getElementById("grid");
     grid.innerHTML = tbl;
 
@@ -27,11 +28,40 @@ render();
 
 
 function editStudent(index){
-    alert(index);
+    // alert(index);
+    var overlay = document.getElementById("overlay");
+    var modal = document.getElementById("modal");
+    overlay.style.display = "block";
+    modal.style.display = "block";
+    
+    this.selectedStudentIndex = index;
+    // overlay.style.visibility = "visible";
+    // modal.style.visibility = "visible";
+
+    var name = document.getElementById("editName");
+    var phone = document.getElementById("editPhone");
+    var address = document.getElementById("editAddress");
+
+    name.value = this.students[index].name;
+    phone.value = this.students[index].phone;
+    address.value = this.students[index].address;
+
 }
+
+function closeModalPopup(){
+    // alert('hi')
+    var overlay = document.getElementById("overlay");
+    var modal = document.getElementById("modal");
+    overlay.style.display = "none";
+    modal.style.display = "none";
+    //  overlay.style.visibility = "hidden";
+    //  modal.style.visibility = "hidden";
+}
+
 
 function deleteStudent(index){
  //   alert(index);
+//  evt.stopPropogation();
     var row = document.getElementById("row" + index);
     row.style.display = "none";
 
@@ -41,12 +71,20 @@ function addStudent(){
     var name = prompt("Enter Name:");
     var phone = prompt("Enter Phone:");
     var address = prompt("Enter Address:");
-
-
     this.students.push({name:name, phone:phone, address:address});
     console.log(this.students);
     render();
-
-
 }
+
+function editStudentDetails(index){
+    var name = document.getElementById("editName");
+    var phone = document.getElementById("editPhone");
+    var address = document.getElementById("editAddress");
+    this.students[this.selectedStudentIndex].name = name.value;
+    this.students[this.selectedStudentIndex].phone =phone.value;
+    this.students[this.selectedStudentIndex].address = address.value;
+    render();
+    closeModalPopup();
+}
+
 
