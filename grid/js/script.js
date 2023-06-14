@@ -68,12 +68,45 @@ function deleteStudent(index){
 }
 
 function addStudent(){
-    var name = prompt("Enter Name:");
-    var phone = prompt("Enter Phone:");
-    var address = prompt("Enter Address:");
-    this.students.push({name:name, phone:phone, address:address});
-    console.log(this.students);
-    render();
+    // var name = prompt("Enter Name:");
+    // var phone = prompt("Enter Phone:");
+    // var address = prompt("Enter Address:");
+
+
+    var overlay = document.getElementById("overlay");
+    var modal = document.getElementById("addModal");
+    overlay.style.display = "block";
+    modal.style.display = "block";
+    
+    // overlay.style.visibility = "visible";
+    // modal.style.visibility = "visible";
+
+
+}
+
+function addStudentDetails(){
+    var name = document.getElementById("addName").value;
+    var phone = document.getElementById("addPhone").value;
+    var address = document.getElementById("addAddress").value;
+    var err = document.getElementsByClassName('error');
+
+    if(name !== "" && phone !== "" && address !== ""){
+        this.students.push({name:name, phone:phone, address:address});
+        console.log(this.students);
+    
+        var overlay = document.getElementById("overlay");
+        var modal = document.getElementById("addModal");
+        overlay.style.display = "none";
+        modal.style.display = "none";
+        err.style.display= "none";
+        render();
+    } else {
+
+        err[0].style.display= "block";
+        err[1].style.display= "block";
+        err[2].style.display= "block";
+    }
+
 }
 
 function editStudentDetails(index){

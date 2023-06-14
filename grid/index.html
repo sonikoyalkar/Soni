@@ -9,9 +9,9 @@
         <table id="grid" class="table"></table>
 
 
-        <div class="overlay" id="overlay"></div>
+        <div class="overlay" style="display: none;" id="overlay"></div>
 
-        <div class="modal" id="modal">
+        <div class="modal" style="display: none;" id="modal">
             <button class="close-btn" onclick="closeModalPopup()">X</button>
 
             <form name="editStudentForm">
@@ -34,6 +34,45 @@
             <div class="action-btns">
                 <button class="btn-cancel" onclick="closeModalPopup()">Close</button>
                 <button class="btn-submit" onclick="editStudentDetails()">Submit</button>
+            </div>
+
+        </div>
+
+
+        <div class="modal" style="display: none;" id="addModal">
+            <button class="close-btn" onclick="closeModalPopup()">X</button>
+
+            <form name="addStudentForm">
+                <div>
+                    <label>Name</label>
+                    <input type="text" name="name" id="addName" />
+
+                    <div class="error" style="display: none;">
+                        Please enter your name.
+                    </div>
+                </div>
+                <div>
+                    <label>Phone</label>
+                    <input type="text" name="phone" id="addPhone" />
+                    <div class="error" style="display: none;">
+                        Please enter your phone number.
+                    </div>
+                </div>
+                <div>
+                    <label>Address</label>
+                    <input type="text" name="address" id="addAddress" />
+                    <div class="error" style="display: none;">
+                        Please enter your address.
+                    </div>
+                
+                </div>
+
+
+            </form>
+
+            <div class="action-btns">
+                <button class="btn-cancel" onclick="closeModalPopup()">Close</button>
+                <button class="btn-submit" onclick="addStudentDetails()">Submit</button>
             </div>
 
         </div>
